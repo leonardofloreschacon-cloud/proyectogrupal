@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard | Colegio 1270</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Librería de Supabase -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+<body>
+    <!-- Menú Lateral -->
+    <nav class="sidebar">
+        <h2>Colegio 1270</h2>
+        <ul>
+            <li><a href="index.html">Dashboard</a></li>
+            <li><a href="matriculas.html" class="activo">Matrículas</a></li>
+            <li><a href="estudiantes.html">Estudiantes</a></li>
+            <li><a href="docentes.html">Docentes</a></li>
+        </ul>
+    </nav>
+
+    <!-- Contenido Principal -->
+    <main class="main-content">
+        <header>
+            <h1>Panel Administrativo</h1>
+            <div class="perfil">Admin <span>👤</span></div>
+        </header>
+
+        <!-- Tarjetas de Resumen -->
+        <section class="tarjetas">
+            <div class="card">
+                <h3>Total Matrículas</h3>
+                <p id="total-matriculas">Cargando...</p>
+            </div>
+            <div class="card">
+                <h3>Estado</h3>
+                <p>Sistema Activo</p>
+            </div>
+        </section>
+
+        <!-- PASO 1: Formulario para Nuevo Estudiante -->
+        <section class="formulario-container" style="background: white; padding: 20px; border-radius: 8px; margin-bottom: 20px; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
+            <h2 style="margin-bottom: 15px;">1. Registrar Nuevo Estudiante en el Sistema</h2>
+            <form id="form-estudiante" style="display: flex; gap: 10px;">
+                <input type="text" id="nombres" placeholder="Nombres" required style="padding: 10px; flex: 1; border: 1px solid #ddd; border-radius: 5px;">
+                <input type="text" id="apellidos" placeholder="Apellidos" required style="padding: 10px; flex: 1; border: 1px solid #ddd; border-radius: 5px;">
+                <input type="text" id="dni" placeholder="DNI (8 dígitos)" required maxlength="8" style="padding: 10px; flex: 1; border: 1px solid #ddd; border-radius: 5px;">
+                <button type="submit" style="padding: 10px 20px; background-color: #2c3e50; color: white; border: none; border-radius: 5px; cursor: pointer;">Guardar Estudiante</button>
+            </form>
+            <p id="mensaje-form" style="margin-top: 10px; font-weight: bold;"></p>
+        </section>
+
+        <!-- PASO 2: Formulario para Nueva Matrícula -->
+        <section class="formulario-container" style="background: white; padding: 20px; border-radius: 8px; margin-bottom: 30px; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
+            <h2 style="margin-bottom: 15px;">2. Matricular Estudiante Existente</h2>
+            <form id="form-matricula" style="display: flex; gap: 10px;">
+                <input type="text" id="dni-matricula" placeholder="DNI del Estudiante" required maxlength="8" style="padding: 10px; flex: 1; border: 1px solid #ddd; border-radius: 5px;">
+                <select id="grado-matricula" required style="padding: 10px; flex: 1; border: 1px solid #ddd; border-radius: 5px;">
+                    <option value="" disabled selected>Selecciona Grado y Sección</option>
+                    
+                    <!-- REEMPLAZA EL VALUE CON EL ID LARGO DE TU GRADO DE SUPABASE -->
+                    <option value="1">5to A</option>
+                    
+                </select>
+                <button type="submit" style="padding: 10px 20px; background-color: #27ae60; color: white; border: none; border-radius: 5px; cursor: pointer;">Matricular</button>
+            </form>
+            <p id="mensaje-matricula" style="margin-top: 10px; font-weight: bold;"></p>
+        </section>
+
+        <!-- Tabla de Datos -->
+        <section class="tabla-container">
+            <h2>Últimas Matrículas</h2>
+            <table class="tabla-moderna">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Estudiante (Apellidos y Nombres)</th>
+                        <th>Grado y Sección</th>
+                        <th>Fecha</th>
+                        <th>Estado</th>
+                    </tr>
+                </thead>
+                <tbody id="cuerpo-tabla">
+                    <!-- Los datos de Supabase se inyectarán aquí -->
+                    <tr><td colspan="5">Conectando a la base de datos...</td></tr>
+                </tbody>
+            </table>
+        </section>
+    </main>
+
+    <!-- Lógica de Conexión -->
+    <script src="app.js"></script>
+</body>
+</html>

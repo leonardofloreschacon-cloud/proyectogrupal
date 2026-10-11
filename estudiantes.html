@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Estudiantes | Colegio 1270</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Librería de Supabase -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+<body>
+    <!-- Menú Lateral -->
+    <nav class="sidebar">
+        <h2>Colegio 1270</h2>
+        <ul>
+            <li><a href="index.html">Dashboard</a></li>
+            <li><a href="matriculas.html" class="activo">Matrículas</a></li>
+            <li><a href="estudiantes.html">Estudiantes</a></li>
+            <li><a href="docentes.html">Docentes</a></li>
+        </ul>
+    </nav>
+
+    <!-- Contenido Principal -->
+    <main class="main-content">
+        <header>
+            <h1>Directorio General de Estudiantes</h1>
+            <div class="perfil">Admin <span>👤</span></div>
+        </header>
+
+        <!-- Tabla de Datos -->
+        <section class="tabla-container">
+            <h2>Todos los alumnos registrados</h2>
+            <table class="tabla-moderna">
+                <thead>
+                    <tr>
+                        <th>DNI</th>
+                        <th>Apellidos</th>
+                        <th>Nombres</th>
+                    </tr>
+                </thead>
+                <tbody id="cuerpo-tabla-estudiantes">
+                    <!-- Los datos de Supabase se inyectarán aquí -->
+                    <tr><td colspan="3">Cargando base de datos...</td></tr>
+                </tbody>
+            </table>
+        </section>
+    </main>
+
+    <!-- Lógica de Conexión exclusiva para esta página -->
+    <script src="estudiantes.js"></script>
+</body>
+</html>
