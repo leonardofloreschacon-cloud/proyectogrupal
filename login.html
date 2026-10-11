@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login | EduCore</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+<body style="display: flex; justify-content: center; align-items: center; height: 100vh; background-color: #ecf0f1; margin: 0;">
+    
+    <div style="background: white; padding: 40px; border-radius: 10px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); width: 100%; max-width: 350px; text-align: center;">
+        <h1 style="color: #2c3e50; margin-bottom: 5px;">EduCore</h1>
+        <p style="color: #7f8c8d; margin-bottom: 25px;">Gestión Escolar - Panel Administrativo</p>
+        
+        <form id="form-login" style="display: flex; flex-direction: column; gap: 15px;">
+            <input type="email" id="email" placeholder="Correo electrónico" required style="padding: 12px; border: 1px solid #ddd; border-radius: 5px; font-size: 16px;">
+            <input type="password" id="password" placeholder="Contraseña" required style="padding: 12px; border: 1px solid #ddd; border-radius: 5px; font-size: 16px;">
+            <button type="submit" style="padding: 12px; background-color: #2980b9; color: white; border: none; border-radius: 5px; font-size: 16px; font-weight: bold; cursor: pointer;">Ingresar al Sistema</button>
+        </form>
+        
+        <p id="mensaje-login" style="margin-top: 15px; font-weight: bold;"></p>
+    </div>
+
+    <!-- Script de conexión -->
+    <script src="login.js"></script>
+</body>
+</html>

@@ -1,14 +1,8 @@
-// 1. Configura tus credenciales
-const SUPABASE_URL = 'https://leurovwytmfiicwhycpr.supabase.co';
-const SUPABASE_ANON_KEY = 'sb_publishable_mrURZm4JhHxHbAoOLPC3Hw_bVCXmwhT';
-
-const clienteSupabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
-
-// 2. Función para leer los docentes
+// Función para leer los docentes
 async function cargarDocentes() {
     try {
-        // Hacemos el select a la tabla 'docentes' que me mostraste
-        const { data: docentes, error } = await clienteSupabase
+        // Usamos window.clienteSupabase porque el guardia (auth.js) ya lo configuró
+        const { data: docentes, error } = await window.clienteSupabase
             .from('docentes')
             .select('dni, nombres, apellidos, telefono_contacto')
             .order('apellidos', { ascending: true });

@@ -1,15 +1,8 @@
-// 1. Configura tus credenciales
-const SUPABASE_URL = 'https://leurovwytmfiicwhycpr.supabase.co';
-const SUPABASE_ANON_KEY = 'sb_publishable_mrURZm4JhHxHbAoOLPC3Hw_bVCXmwhT';
-
-// Inicializar Supabase
-const clienteSupabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
-
-// 2. Función para leer TODOS los estudiantes
+// Función para leer TODOS los estudiantes
 async function cargarEstudiantes() {
     try {
-        // Hacemos el select a la tabla 'estudiantes' ordenado por apellidos
-        const { data: estudiantes, error } = await clienteSupabase
+        // Usamos window.clienteSupabase para conectar con la base de datos
+        const { data: estudiantes, error } = await window.clienteSupabase
             .from('estudiantes')
             .select('dni, nombres, apellidos')
             .order('apellidos', { ascending: true });
@@ -18,6 +11,12 @@ async function cargarEstudiantes() {
 
         const cuerpoTabla = document.getElementById('cuerpo-tabla-estudiantes');
         cuerpoTabla.innerHTML = ''; 
+
+        // Si no hay estudiantes todavía
+        if(estudiantes.length === 0){
+             cuerpoTabla.innerHTML = `<tr><td colspan="3" style="text-align:center;">Aún no hay estudiantes registrados.</td></tr>`;
+             return;
+        }
 
         estudiantes.forEach(est => {
             const fila = `
@@ -36,5 +35,5 @@ async function cargarEstudiantes() {
     }
 }
 
-// 3. Ejecutar al cargar la página
+// Ejecutar al cargar la página
 window.onload = cargarEstudiantes;

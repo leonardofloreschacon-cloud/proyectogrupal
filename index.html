@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard | Colegio 1270</title>
     <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 </head>
 <body>
     <!-- Menú Lateral -->
@@ -15,6 +16,8 @@
             <li><a href="matriculas.html">Matrículas</a></li>
             <li><a href="estudiantes.html">Estudiantes</a></li>
             <li><a href="docentes.html">Docentes</a></li>
+            <li style="margin-top: 30px;">
+                <a href="#" onclick="cerrarSesion(); return false;" style="color: #e74c3c;">Cerrar Sesión 🚪</a>            </li>
         </ul>
     </nav>
 
@@ -41,5 +44,7 @@
             <p style="color: #666; margin-top: 10px;">En esta pantalla principal podrás agregar gráficos y estadísticas más adelante. Para gestionar registros, utiliza el menú lateral.</p>
         </section>
     </main>
+
+    <script src="auth.js"></script>
 </body>
 </html>

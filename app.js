@@ -1,9 +1,3 @@
-// 1. Configura tus credenciales
-const SUPABASE_URL = 'https://leurovwytmfiicwhycpr.supabase.co';
-const SUPABASE_ANON_KEY = 'sb_publishable_mrURZm4JhHxHbAoOLPC3Hw_bVCXmwhT';
-
-// Inicializar Supabase
-const clienteSupabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
 // 2. Función para leer las matrículas (Llena la tabla y la tarjeta)
 async function cargarMatriculas() {
